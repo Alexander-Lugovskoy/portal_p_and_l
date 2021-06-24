@@ -1,0 +1,34 @@
+input {
+  display: block;
+}
+
+h2 {
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+
+form {
+  display: block;
+  margin: 0 auto;
+}
+
+.red_text {
+	font-size: 25px;
+	color: red;
+	text-decoration: underline;
+	padding-top: 50px;
+	padding-bottom: 10px;
+	display: block;}
+#result span {
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#content-wrapper{
+	margin: 25px;
+}
+
+.plan_field_result {
+	display: inline-block !important;
+}

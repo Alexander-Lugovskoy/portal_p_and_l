@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+
+<head>
+    <title>P&L | Планирование</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="stylesheet" type="text/css" href="./css/plan.css">
+    
+</head>
+<body>
+<div id="content-wrapper">
+    <div>
+        <h1>
+                P&amp;L | Планирование
+        </h1>
+        <form action="/" id="plan-true-form" onsubmit="return false">
+            <div id="plan-form">
+                    <h2>
+                            Общие данные
+                    </h2>
+                    <label for="point_break_even">
+                            Точка безубыточности(руб.)
+                    </label>
+                    <input type="number" min="1" required name="point_break_even" id="point_break_even" placeholder="2550000"
+                    value="2550000">
+                    <label for="days_in_mount">
+                            Кол-во учитываемых дней в месяце
+                    </label>
+                    <input type="number" min="1" required name="days_in_mount" id="days_in_mount" placeholder="22" value="22">
+                    <label for="total_proceeds">
+                            Общая выручка в месяц(руб.)
+                    </label>
+                    <input type="number" min="1" required name="total_proceeds" id="total_proceeds" placeholder="2550000"
+                    value="2550000">
+                    <label for="proceed_input_percent">
+                            Выручка (Вход) (% от общей выручки)
+                    </label>
+                    <input required type="number" step="0.01" max="100" name="proceed_input_percent" id="proceed_input_percent" placeholder="21.95"
+                    value="21.95">
+                    <h2>
+                            Выручка за кальяны
+                    </h2>
+                    <label for="hookah_average_check">
+                            кальян, средний чек (руб.)
+                    </label>
+                    <input type="number" min="1" required name="hookah_average_check" id="hookah_average_check" placeholder="333"
+                    value="333">
+                    <label for="hookah_proceeds_percent">
+                            выручка за кальяны (% от общей выручки)
+                    </label>
+                    
+                    <input type="number" step="0.01" max="100" required name="hookah_proceeds_percent" id="hookah_proceeds_percent" placeholder="5.3"
+                    value="5.3">
+                     <!--
+                    <label for="kitchen_people_count">
+                            количество чеков по кальяну за месяц
+                    </label>
+
+                    <input required type="number" min="1" name="kitchen_people_count" id="kitchen_people_count" placeholder="11339"
+                    value="11339">
+                    -->
+                    <h2>
+                            Выручка за бар
+                    </h2>
+
+                    <label for="bar_average_check">
+                            бар, средний чек (руб.)
+                    </label>
+                    <input min="1" type="number" required name="bar_average_check" id="bar_average_check" placeholder="650"
+                    value="650">
+
+                    <label for="bar_proceeds_percent">
+                            выручка за бар (% от общей выручки)
+                    </label>
+                    <input type="number" step="0.01" required name="bar_proceeds_percent" id="bar_proceeds_percent" placeholder="65.72"
+                    value="65.72">
+                    <label for="bar_people_count">
+                            количество чеков в баре за месяц
+                    </label>
+                    <input required type="number" min="1" name="bar_people_count" id="bar_people_count" placeholder="11339"
+                    value="11339">
+                    <h2>
+                            Выручка за кухню
+                    </h2>
+                    <label for="kitchen_proceeds_percent">
+                            выручка за кухню (% от общей выручки)
+                    </label>
+                    <input type="number" step="0.01" max="100" required name="kitchen_proceeds_percent" id="kitchen_proceeds_percent" placeholder="7.03"
+                    value="7.03">
+                    <label for="kitchen_average_check">
+                            #кухня, средний чек (руб)
+                    </label>
+                    <input type="number" min="1" required name="kitchen_average_check" id="kitchen_average_check" placeholder="329"
+                    value="329">
+                    <!--
+                    <label for="kitchenr_people_count">
+                            количество чеков в кухне за месяц
+                    </label>
+                    <input required type="number" min="1" name="kitchen_people_count" id="kitchen_people_count" placeholder="11339"
+                    value="11339">
+                    -->
+                    <span class="red_text">ВНИМАНИЕ! ВСЕ ПОЛЯ НИЖЕ ВВОДЯТСЯ СО ЗНАКОМ МИНУС! (за исключением излишков по инвентаризации товаров)</span>
+                    <h2>
+                            Себестоимость продаж. Бар.
+                    </h2>
+                    <label for="bar_foodcost">
+                            фудкост бара (% от общей выручки)
+                    </label>
+                    <input type="number" step="0.01" min="-100" max="-1" required name="bar_foodcost" id="bar_foodcost" placeholder="-51.5" value="-51.5">
+                    <label for="bar_products_write_off_percent">
+                            списания товаров по бару (% от общей выручки)
+                    </label>
+                    <input type="number" step="0.01" min="-100" max="-0.01" required name="bar_products_write_off_percent" id="bar_products_write_off_percent" placeholder="-0.04" 
+                    value="-0.04">
+                    <label for="bar_surplus_percent">
+                            излишки по инвентаризации товара (% от общей выручки)
+                    </label>
+                    <input type="number" step="0.01" min="0" max="100" required name="bar_surplus_percent" id="bar_surplus_percent" value="0">
+                    <label for="bar_failure_percent">
+                            недосдачи по инвентаризации (% от общей выручки)
+                    </label>
+                    <input type="number" step="0.01" min="-100" max="-0.01" required name="bar_failure_percent" id="bar_failure_percent" value="-0.01">
+                    <h2>
+                            Себестоимость продаж. Кухня.
+                    </h2>
+                    <label for="kitchen_foodcost_percent">
+                            фудкост кухни (% от общей выручки)
+                    </label>
+                    <input type="number" step="0.01" min="-100" max="-0.01" required name="kitchen_foodcost_percent" id="kitchen_foodcost_percent" placeholder="-45"  value="-45">
+                    <label for="kitchen_products_write_off_percent">
+                            списания товаров (% от общей выручки)
+                    </label>
+                    <input type="number" step="0.01" min="-100" max="-0.01" required name="kitchen_products_write_off_percent" id="kitchen_products_write_off_percent" placeholder="-0.04" 
+                    value="-0.04">
+                    <label for="kitchen_surplus_percent">
+                            излишки по инвентаризации товара (% от общей выручки)
+                    </label>
+                    <input type="number" step="0.01" min="0" max="100" placeholder="1" required name="kitchen_surplus_percent" id="kitchen_surplus_percent" value="1">
+                    <label for="kitchen_failure_percent">
+                            недосдачи по инвентаризации товара (% от общей выручки)
+                    </label>
+                    <input type="number" step="0.01" min="-100" max="-0.01" required name="kitchen_failure_percent" id="kitchen_failure_percent" value="-0.01" value="-0.01">
+                    <h2>
+                            Заработная плата (ФОТ+бонусы)_Повар
+                    </h2>
+                    <label for="fot_labor_zp_povar_percent">
+                            Начисления повар (% от общей выручки)
+                    </label>
+                    <input type="number" step="0.01" min="-100" max="0" required name="fot_labor_zp_povar_percent" id="fot_labor_zp_povar_percent"
+                    value="0">
+                    <label for="fot_labor_povar_compensation_rub">
+                            Компенсации_Повар(руб.)
+                    </label>
+                    <input type="number" max="0" required name="fot_labor_povar_compensation_rub" id="fot_labor_povar_compensation_rub"
+                    value="0">
+                    <label for="fot_labor_povar_mat_help_rub">
+                            Пособия,Мат.помощь_Повар(руб.)
+                    </label>
+                    <input type="number" max="0"  required name="fot_labor_povar_compensation_rub" id="fot_labor_povar_mat_help_rub"
+                    value="0">
+                    <h2>
+                            Заработная плата (ФОТ)_Администратор
+                    </h2>
+                    <label for="fot_labor_admin_zp_rub">
+                            Начисления, администратор (руб)
+                    </label>
+                    <input type="number" max="0" required name="fot_labor_admin_zp_rub" id="fot_labor_admin_zp_rub" value="0">
+                    <label for="fot_labor_admin_zp_bonus_rub">
+                            Бонусы_Администратор (руб)
+                    </label>
+                    <input type="number" max="0" required name="fot_labor_admin_zp_bonus_rub" id="fot_labor_admin_zp_bonus_rub"
+                    value="0">
+                    <label for="fot_labor_admin_zp_compensation_rub">
+                            Компенсации_Администратор (руб)
+                    </label>
+                    <input type="number" max="0" required name="fot_labor_admin_zp_compensation_rub" id="fot_labor_admin_zp_compensation_rub"
+                    value="0">
+                    <label for="fot_labor_admin_zp_mat_help_rub">
+                            Пособия,Мат.помощь_Администратор (руб)
+                    </label>
+                    <input type="number" value="0" max="0" required name="fot_labor_admin_zp_mat_help_rub" id="fot_labor_admin_zp_mat_help_rub"
+                    value="">
+                    <h2>
+                            Заработная плата (ФОТ)_Прочий персонал
+                    </h2>
+                    <label for="fot_zp_zvukar">
+                            Звукарь (руб)
+                    </label>
+                    <input type="number" max="0" required name="fot_zp_zvukar" id="fot_zp_zvukar" value="0">
+                    <label for="fot_zp_zavhoz">
+                            Завхоз (руб)
+                    </label>
+                    <input type="number" max="0" required name="fot_zp_zavhoz" id="fot_zp_zavhoz" value="0">
+                    <label for="fot_zp_officiants">
+                            Оффицианты (руб)
+                    </label>
+                    <input type="number" max="0" required name="fot_zp_zvukar" id="fot_zp_officiants" value="0">
+                    <label for="fot_zp_cashiers">
+                            Кассиры (руб)
+                    </label>
+                    <input type="number" max="0" required name="fot_zp_cashiers" id="fot_zp_cashiers" value="0">
+                    <label for="fot_zp_hostes">
+                            Хостес (руб)
+                    </label>
+                    <input type="number" max="0" required name="fot_zp_hostes" id="fot_zp_hostes" value="0">
+                    <label for="fot_zp_barmans">
+                            Бармены (руб)
+                    </label>
+                    <input type="number" max="0" required name="fot_zp_barmans" id="fot_zp_barmans" value="0">
+                    <h2>
+                            ФОТ административного персонала
+                    </h2>
+                    <label for="fot_zp_manager">
+                            Менеджер (руб)
+                    </label>
+                    <input type="number" max="0"  required name="fot_zp_manager" id="fot_zp_manager" value="0">
+                    <label for="fot_zp_bu_calc_kadr">
+                            Бухгалтер + калькулятор + Кадровик + Офис-менеджер (руб)
+                    </label>
+                    <input type="number" max="0" required name="fot_zp_bu_calc_kadr" id="fot_zp_bu_calc_kadr" value="0">
+                    <label for="fot_zp_admin_po_rejimy">
+                            Администратор по режиму (руб)
+                    </label>
+                    <input type="number"  max="0" required name="fot_zp_admin_po_rejimy" id="fot_zp_admin_po_rejimy" value="0">
+                    <h2>
+                            Прочие расходы
+                    </h2>
+                    <label for="personal_apartments_rent_rub">
+                            Аренда квартир для персонала (руб)
+                    </label>
+                    <input type="number" max="0" required name="personal_apartments_rent_rub" id="personal_apartments_rent_rub"
+                    value="0">
+                    <label for="personal_food_cost_percent">
+                            Питание сотрудников (% от общей выручки)
+                    </label>
+                    <input type="number" min="-100" max="0" step="0.01" required name="personal_food_cost_percent" id="personal_food_cost_percent" placeholder="0" 
+                    value="0">
+                    <label for="personal_transport_cost_rub">
+                            Проезд сотрудников (руб)
+                    </label>
+                    <input type="number" max="0" required name="personal_transport_cost_rub" id="personal_transport_cost_rub"
+                    value="0">
+                    <label for="personal_medicaments_medosmotr_rub">
+                            Медосмотр персонала/затраты на медикаменты (руб)
+                    </label>
+                    <input type="number" max="0" required name="personal_medicaments_medosmotr_rub" id="personal_medicaments_medosmotr_rub"
+                    value="0">
+                    <label for="personal_registration_in_ufms_rub">
+                            Регистрация сотрудников в УФМС (руб)
+                    </label>
+                    <input type="number" max="0" required name="personal_registration_in_ufms_rub" id="personal_registration_in_ufms_rub"
+                    value="0">
+                    <label for="rental_of_premises_rub">
+                            аренда помещения (руб)
+                    </label>
+                    <input type="number" max="0" required name="personal_registration_in_ufms_rub" id="rental_of_premises_rub"
+                    value="0">
+                    <label for="communal_rent">
+                            коммунальные услуги (руб)
+                    </label>
+                    <input type="number" max="0" required name="communal_rent" id="communal_rent" value="0">
+                    <label for="wanish_cost_percent">
+                            стоимость моющих средств (% от общей выручки)
+                    </label>
+                    <input type="number" max="0" required name="wanish_cost_percent" id="wanish_cost_percent" value="0">
+                    <label for="parking_coupons_rub">
+                            расходы на парковочные купоны (% от общей выручки)
+                    </label>
+                    <input type="number" max="0" required name="parking_coupons_rub" id="parking_coupons_rub" value="0">
+                    <label for="room_maintenance_rub">
+                            обслуживание помещения (руб.)
+                    </label>
+                    <input type="number" max="0" required name="room_maintenance_rub" id="room_maintenance_rub" value="0">
+                    <label for="dizenfection_rub">
+                            дизенфекция (руб.)
+                    </label>
+                    <input type="number" max="0" required name="dizenfection_rub" id="dizenfection_rub" value="0">
+                    <label for="kovri_ot_gryazi_rub">
+                            грязезащитныые коврики (руб.)
+                    </label>
+                    <input type="number" max="0" required name="kovri_ot_gryazi_rub" id="kovri_ot_gryazi_rub" value="0">
+                    <label for="to_kts_rub">
+                            Охрана, безопаснось и тех. обслуж пожарной (ТО КТС) (руб.)
+                    </label>
+                    <input type="number" max="0" required name="to_kts_rub" id="to_kts_rub" value="0">
+                    <label for="garbage_removal_rub">
+                            вывоз мусора (руб.)
+                    </label>
+                    <input type="number" max="0" required name="garbage_removal_rub" id="garbage_removal_rub" value="0">
+                    <h2>
+                            Текущие улучшения (обновление/ремонт и обслуживание)
+                    </h2>
+                    <label for="premises_capital_remont_rub">
+                            затраты на капитальный ремонт (руб.)
+                    </label>
+                    <input type="number" value="0" max="0" required maxlength="-1" name="premises_capital_remont_rub" id="premises_capital_remont_rub"
+                    value="0">
+                    <label for="premises_cosmetical_remont_rub">
+                            затраты на косметический ремонт (руб.)
+                    </label>
+                    <input required type="number" max="0" name="premises_cosmetical_remont_rub" id="premises_cosmetical_remont_rub"
+                    value="0">
+                    <label for="furniture_updating_rub">
+                            затраты на обновление мебели (руб.)
+                    </label>
+                    <input type="number" max="0" required name="furniture_updating_rub" id="furniture_updating_rub" value="0">
+                    <label for="equipment_remont_service_rub">
+                            затраты на ремонт и обслуживание оборудования (руб.)
+                    </label>
+                    <input type="number" max="0" required name="equipment_remont_service_rub" id="equipment_remont_service_rub"
+                    value="0">
+                    <label for="air_conditioning_remont_service_rub">
+                            затраты на ремонт и обслуживание кондиционеров (руб.)
+                    </label>
+                    <input  type="number" max="0" required name="air_conditioning_remont_service_rub" id="air_conditioning_remont_service_rub"
+                    value="0">
+                    <label for="ventilation_remont_service_rub">
+                            затраты на ремонт и обслуживание вентиляции (руб.)
+                    </label>
+                    <input type="number" max="0" required name="ventilation_remont_service_rub" id="ventilation_remont_service_rub"
+                    value="0">
+                    <label for="lamp_remont_service_rub">
+                            затраты на ремонт/обслуживание/замену светильников (руб.)
+                    </label>
+                    <input type="number" max="0" required name="lamp_remont_service_rub" id="lamp_remont_service_rub" value="0">
+                    <label for="electric_remont_service_rub">
+                            затраты на обслуживание и ремонт электрики (руб.)
+                    </label>
+                    <input type="number" max="0" required name="electric_remont_service_rub" id="electric_remont_service_rub"
+                    value="0">
+                    <label for="canalization_remont_service_rub">
+                            затраты на ремонт и обслуживание канализации (руб.)
+                    </label>
+                    <input type="number" max="0" required name="canalization_remont_service_rub" id="canalization_remont_service_rub"
+                    value="0">
+                    <label for="posuda_inventar_updating_percent">
+                            затраты на обновление посуды и инвентаря (% от общей выручки)
+                    </label>
+                    <input type="number" max="0" required name="posuda_inventar_updating_percent" id="posuda_inventar_updating_percent"
+                    value="0">
+                    <label for="kitchen_inventar_service_rub">
+                            содержание и ремонт куханного инвентаря (руб.)
+                    </label>
+                    <input type="number" max="0" required name="kitchen_inventar_service_rub" id="kitchen_inventar_service_rub"
+                    value="0">
+                    <label for="prochie_ulucheniya_rub">
+                            прочие текущие улучшения (руб.)
+                    </label>
+                    <input  type="number" max="0"required name="prochie_ulucheniya_rub" id="prochie_ulucheniya_rub" value="0">
+                    <h2>
+                            Расходные материалы
+                    </h2>
+                    <label for="orgtechnic_and_cassovie">
+                            Расходные материалы для оргтехники/кассовых аппаратов (руб.)
+                    </label>
+                    <input type="number" max="0" required name="orgtechnic_and_cassovie" id="orgtechnic_and_cassovie" value="0">
+                    <label for="packaging_rub">
+                            Упаковка (руб.)
+                    </label>
+                    <input type="number" max="0" required name="packaging_rub" id="packaging_rub" value="0">
+                    <label for="hoztovars_percent">
+                            Хозтовары (% от общей выручки)
+                    </label>
+                    <input type="number" max="0" required name="hoztovars_percent" id="hoztovars_percent" value="0">
+                    <label for="prochie_rashodniki_percent">
+                            Прочие расходные материалы (значки, браслеты, телефоны POS-материалы,
+                            наклейки, дым, номерки, пейджеры) (% от общей выручки)
+                    </label>
+                    <input type="number" max="0" required name="prochie_rashodniki_percent" id="prochie_rashodniki_percent"
+                    value="0">
+                    <label for="stationery_rub">
+                            канцтовары (руб.)
+                    </label>
+                    <input type="number" max="0" required name="stationery_rub" id="stationery_rub" value="0">
+                    <h2>
+                            Расходы на связь
+                    </h2>
+                    <label for="internet_connection_rub">
+                            Интернет связь (руб.)
+                    </label>
+                    <input type="number" max="0" required name="internet_connection_rub" id="internet_connection_rub" value="0">
+                    <label for="post_office_rub">
+                            Почтовая связь (руб.)
+                    </label>
+                    <input type="number" max="0" required name="post_office_rub" id="post_office_rub" value="0">
+                    <label for="phone_connection_rub">
+                            Телефонная связь (руб.)
+                    </label>
+                    <input type="number" max="0" required name="phone_connection_rub" id="phone_connection_rub" value="0">
+                    <h2>
+                            Еще расходы
+                    </h2>
+                    <label for="transport_rub">
+                            #расходы на транспорт (руб.)
+                    </label>
+                    <input type="number" max="0" required name="transport_rub" id="transport_rub" value="0">
+                    <label for="it_and_po_rub">
+                            расходы на ИТ и ПО (руб.)
+                    </label>
+                    <input type="number" max="0" required name="it_and_po_rub" id="it_and_po_rub" value="0">
+                    <label for="kkm_rub">
+                            ККМ (руб.)
+                    </label>
+                    <input type="number" max="0" required name="kkm_rub" id="kkm_rub" value="0">
+                    <label for="sas_standart_lab_issled_rub">
+                            СЭС, стандартизация, лабораторные исследования (руб.)
+                    </label>
+                    <input type="number" max="0" required name="sas_standart_lab_issled_rub" id="sas_standart_lab_issled_rub"
+                    value="0">
+                    <label for="musical_design_of_music_rub">
+                            Музыкальное оформление бизнеса (руб.)
+                    </label>
+                    <input type="number" max="0" required name="musical_design_of_music_rub" id="musical_design_of_music_rub"
+                    value="0">
+                    <label for="sbis_ofd_rub">
+                            Прочие админ расход (СБИС 850 внесение изменений , ОФД оператор фискальных
+                            данных) (руб.)
+                    </label>
+                    <input type="number" max="0" required name="sbis_ofd_rub" id="sbis_ofd_rub" value="0">
+                    <label for="cctv_and_control_rub">
+                            Расходы на видеомониторинг и контроль (руб.)
+                    </label>
+                    <input type="number" max="0" required name="cctv_and_control_rub" id="cctv_and_control_rub" value="0">
+                    <h2>
+                            Финансовые расходы
+                    </h2>
+                    <label for="expenses_acquiring_percent">
+                            Финансовые расходы (эквайринг) (руб.)
+                    </label>
+                    <input type="number" max="0" required name="expenses_acquiring_percent" id="expenses_acquiring_percent"
+                    value="0">
+                    <label for="expenses_banking_service_percent">
+                            Услуги банка (% от общей выручки)
+                    </label>
+                    <input type="number" max="0" required name="expenses_banking_service_percent" id="expenses_banking_service_percent"
+                    value="0">
+                    <h2>
+                            Налоги и отчисления
+                    </h2>
+                    <label for="income_tax_usn_envd_rub">
+                            Налог на прибыль/УСН/ЕНВД (руб)
+                    </label>
+                    <input type="number" max="0" required name="income_tax_usn_envd_rub" id="income_tax_usn_envd_rub" value="0">
+                    <label for="soc_fonds_percent">
+                            Отчисления в соц фонды (ПФР и ФСС, НДФЛ) (% от общей выручки)
+                    </label>
+                    <input type="number" max="0" required name="soc_fonds_percent" id="soc_fonds_percent" value="0">
+                    <h2>
+                            Реклама и маркетинг P2
+                    </h2>
+                    <label for="fot_adv_specialists_rub">
+                            ФОТ специалистов (руб)
+                    </label>
+                    <input type="number" max="0" required name="fot_adv_specialists_rub" id="fot_adv_specialists_rub" value="0">
+                    <label for="marketing_events_percent">
+                            Маркетинговые мероприятия (% от общей выручки)
+                    </label>
+                    <input type="number" max="0" required name="marketing_events_percent" id="marketing_events_percent" value="0">
+                    <h2>
+                            P3
+                    </h2>
+                    <label for="p3_accountant_rub">
+                            Расходы ЦО: бухгалтер (руб)
+                    </label>
+                    <input type="number" max="0" required name="p3_accountant_rub" id="p3_accountant_rub" value="0">
+                    <label for="p3_royalty_rub">
+                            Роялти (руб)
+                    </label>
+                    <input type="number" max="0" required name="p3_royalty_rub" id="p3_royalty_rub" value="0">
+                    <label for="p3_xx_rub">
+                            ХХ (руб)
+                    </label>
+                    <input type="number" max="0" required name="p3_xx_rub" id="p3_xx_rub" value="0">
+                    <br>
+
+                    <button type="submit" id="plan-form-btn">
+                            Рассчитать
+                    </button>
+            </div>
+        </form>
+    </div>
+
+    <div id="ajax-error" style="display: none; max-width: 1000px; color: red;">Что то пошло не так. Свяжитесь с разработчиком и передайте ему следующие данные: <div id="ajax-error-inputs" style="color: black;"></div></div>
+
+    <div id="result" style="display: none;">
+        <h2>Вычисленные данные</h1>
+        <span id="result_proceed_input_rub">выручка (вход руб.): <span class="plan_field_result"></span></span>
+        <span id="result_hookah_proceeds_rub">выручка за кальяны (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_hookah_checks_count">необходимое количество чеков по кальянам в месяц: <span class="plan_field_result"></span> </span>
+        <span id="result_hookah_checks_count_in_day">необходимое количество чеков по кальянам в день: <span class="plan_field_result"></span> </span>
+        <br>
+        <span id="result_bar_proceeds_rub"><strong>выручка по бару в месяц</strong> (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_bar_checks_count">необходимое количество чеков по бару в месяц: <span class="plan_field_result"></span> </span>
+        <span id="result_bar_checks_count_in_day">необходимое количество чеков по бару в день: <span class="plan_field_result"></span> </span>
+        <br>
+        <span id="result_kitchen_proceeds_rub"><strong>выручка по кухне в месяц</strong> (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_kitchen_checks_count">необходимое количество чеков по кухне в месяц: <span class="plan_field_result"></span> </span>
+        <span id="result_kitchen_checks_count_id_day">необходимое количество чеков по кухне в день: <span class="plan_field_result"></span> </span>
+        <br>
+        <span id="result_bar_foodcost_rub">бар - фудкост (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_bar_products_write_off_rub">бар.списания товаров (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_bar_surplus_rub">бар.излишки по инвентаризации товара (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_bar_failure_rub">бар.недосдачи по инвентаризации товара (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_bar_cost_price_rub"><strong>бар.себестоимость продаж</strong> (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_bar_cost_price_percent"><strong>бар.себестоимость продаж</strong> (%.): <span class="plan_field_result"></span> </span>
+        <br>
+        <span id="result_kitchen_foodcost_rub">фудкост кухни (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_kitchen_products_write_off_rub">кухня.списания товаров (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_kitchen_surplus_rub">кухня. излишки по инвентаризации товара (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_kitchen_failure_rub">кухня. недосдачи по инвентаризации товара (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_kitchen_cost_price_rub"><strong>кухня.себестоимость продаж</strong> (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_kitchen_cost_price_percent"><strong>кухня.себестоимость продаж</strong> (%): <span class="plan_field_result"></span> </span>
+        <br>
+        <span id="result_fot_labor_zp_povar_rub">Начисления повар (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_fot_labor_povar_mat_help_rub">Мат.помощь повар (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_fot_labor_povar_zp_full_rub"><strong>Заработная плата (ФОТ+бонусы)_Повар</strong> (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_fot_labor_povar_zp_full_percent"><strong>Заработная плата (ФОТ+бонусы)_Повар</strong> (%): </span>
+        <br>
+        
+        <span id="result_fpr_labor_admin_zp_full">Заработная плата (ФОТ+бонусы)_Администратор (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_total_loosers_zp">Заработная плата (ФОТ+бонусы+компенсации)_Прочий персонал (бармены, официанты, звукотехник, завхоз (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_total_administration_zp">ФОТ административного персонала (руб.): <span class="plan_field_result"></span> </span>
+        <br>
+
+        <span id="result_personal_food_cost_rub">Питание сотрудников (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_rental_of_premises_percent">Аренда помещения (%.): <span class="plan_field_result"></span> </span>
+        <span id="result_wanish_cost_rub">Стоимость моющих средств (%.): <span class="plan_field_result"></span> </span>
+
+        <br>
+        <span id="result_posuda_inventar_updating_rub">затраты на обновление посуды и инвентаря (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_updating_and_remont_rub">Текущии улучшения (обновление/ремонт и обслуживание) (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_updating_and_remont_percent">Текущии улучшения (обновление/ремонт и обслуживание) (%): <span class="plan_field_result"></span> </span>
+        <span id="result_hoztovars_rub">Хозтовары (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_prochie_rashodniki_rub">Прочие расходные материалы (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_full_cost_connection">Расходы на связь (руб.): <span class="plan_field_result"></span> </span>
+
+        <br>
+
+        <span id="result_expenses_acquiring_percent_rub">Финансовые расходы (эквайринг) (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_expenses_banking_service_rub">Услуги банка (руб.): <span class="plan_field_result"></span> </span>
+        <span id="result_financial_expenses_rub"><strong>Общая сумма финансовых расходов (эквайринг + услуги банка) (руб.): </strong>: <span class="plan_field_result"></span> </span>
+         <span id="result_financial_expenses_percent"><strong>Общая сумма финансовых расходов (эквайринг + услуги банка) (%): </strong>: <span class="plan_field_result"></span> </span>
+
+         <br>
+
+         <span id="result_soc_fonds_rub">Отчисления в соц фонды (ПФР и ФСС, НДФЛ) (руб.): <span class="plan_field_result"></span> </span>
+         <span id="result_marketing_events_rub">Отчисления в соц фонды (ПФР и ФСС, НДФЛ) (руб.): <span class="plan_field_result"></span> </span>
+         <span id="result_rm_p2_rub"><strong>Реклама и маркетинг P2</strong> (руб.): <span class="plan_field_result"></span> </span>
+         <span id="result_rm_p2_percent"><strong>Реклама и маркетинг P2</strong> (%): <span class="plan_field_result"></span> </span>
+         <span id="result_p3_sum_rub"><strong>Сумма расходов P3</strong> (руб.): <span class="plan_field_result"></span> </span>
+
+         <br>
+         <span id="result_total_fot_and_laborcoct_rub"><strong>ФОТ / Labor coct</strong> (руб.): <span class="plan_field_result"></span> </span>
+
+         <span id="result_op1_total_rub"><strong>Сумма расходов ОП1</strong> (руб.): <span class="plan_field_result"></span> </span>
+         <span id="result_op1_total_percent"><strong>Сумма расходов ОП1</strong> (%): <span class="plan_field_result"></span> </span>
+         <br>
+         <span id="result_total_expenses_rub"><strong>СУММА РАСХОДОВ(ОБЩАЯ)</strong> (руб.): <span class="plan_field_result"></span> </span>
+         <span id="result_total_expenses_percent"><strong>СУММА РАСХОДОВ(ОБЩАЯ)</strong> (%): <span class="plan_field_result"></span> </span>
+         <br>
+         <span id="result_total_profit_rub"><strong>Прибыль без учета возврата инвестиций/ распределения</strong> (руб.): <span class="plan_field_result"></span> </span>
+         <span id="result_total_profit_percent"><strong>Прибыль без учета возврата инвестиций/ распределения</strong> (%.): <span class="plan_field_result"></span> </span>
+         
+         
+         
+         
+        
+        
+        
+        
+        
+        
+
+        
+        <button style="margin-top: 15px; margin-bottom: 5px;" id="save_page_as_pdf">Сохранить</button>
+    </div>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <script src="./js/plan.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
+    <script>
+
+        $('#save_page_as_pdf').click(function () {
+            var element = document.getElementById('content-wrapper');
+            html2pdf(element);
+        });
+
+    </script>  
+
+</body>
+
+</html>
